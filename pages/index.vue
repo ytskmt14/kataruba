@@ -1,16 +1,20 @@
 <template>
-  <amplify-authenticator>
-    <h1>TodoApp</h1>
-    <v-text-field v-model="name" label="Name"></v-text-field>
-    <v-text-field v-model="description" label="Description"></v-text-field>
-    <v-btn @click="createTodo">Create</v-btn>
-    <ul>
-      <li v-for="todo in todos" :key="todo.id">
-        {{ todo.name }} : {{ todo.description }}
-      </li>
-    </ul>
-    <amplify-sign-out></amplify-sign-out>
-  </amplify-authenticator>
+  <div>
+    <div v-if="authState !== 'signedin'">You are signed out.</div>
+    <amplify-authenticator>
+      <div v-if="authState === 'signedin' && user" ></div>
+      <h1>TodoApp</h1>
+      <v-text-field v-model="name" label="Name"></v-text-field>
+      <v-text-field v-model="description" label="Description"></v-text-field>
+      <v-btn @click="createTodo">Create</v-btn>
+      <ul>
+        <li v-for="todo in todos" :key="todo.id">
+          {{ todo.name }} : {{ todo.description }}
+        </li>
+      </ul>
+      <amplify-sign-out></amplify-sign-out>
+    </amplify-authenticator>
+  </div>
 </template>
 
 <script>
@@ -18,16 +22,27 @@ import { API } from 'aws-amplify'
 import { createTodo } from '~/src/graphql/mutations'
 import { listTodos } from '~/src/graphql/queries'
 import { onCreateTodo } from '~/src/graphql/subscriptions'
+import { onAuthUIStateChange } from '@aws-amplify/ui-components';
 
 export default {
   data() {
     return {
+      user: undefined,
+      authState: undefined,
+      unsubscribeAuth: undefined,
       name: '',
       description: '',
       todos: [],
     }
   },
+  beforeDestroy() {
+    this.unsubscribeAuth();
+  },
   created() {
+    this.unsubscribeAuth = onAuthUIStateChange((authState, authData) => {
+      this.authState = authState;
+      this.user = authData;
+    });
     this.getTodos()
     this.subscribe()
   },
