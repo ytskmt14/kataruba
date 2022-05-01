@@ -1,15 +1,26 @@
 {
-  "dev": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-kataruba-dev-121158-authRole",
-      "UnauthRoleArn": "arn:aws:iam::335296109823:role/amplify-kataruba-dev-121158-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::335296109823:role/amplify-kataruba-dev-121158-authRole",
-      "Region": "ap-northeast-1",
-      "DeploymentBucketName": "amplify-kataruba-dev-121158-deployment",
-      "UnauthRoleName": "amplify-kataruba-dev-121158-unauthRole",
-      "StackName": "amplify-kataruba-dev-121158",
-      "StackId": "arn:aws:cloudformation:ap-northeast-1:335296109823:stack/amplify-kataruba-dev-121158/77aaaa70-c8fc-11ec-bf19-0a702c694f49",
-      "AmplifyAppId": "d3tohughwc4wuy"
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-kataruba-dev-121158-authRole",
+            "UnauthRoleArn": "arn:aws:iam::335296109823:role/amplify-kataruba-dev-121158-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::335296109823:role/amplify-kataruba-dev-121158-authRole",
+            "Region": "ap-northeast-1",
+            "DeploymentBucketName": "amplify-kataruba-dev-121158-deployment",
+            "UnauthRoleName": "amplify-kataruba-dev-121158-unauthRole",
+            "StackName": "amplify-kataruba-dev-121158",
+            "StackId": "arn:aws:cloudformation:ap-northeast-1:335296109823:stack/amplify-kataruba-dev-121158/77aaaa70-c8fc-11ec-bf19-0a702c694f49",
+            "AmplifyAppId": "d3tohughwc4wuy"
+        },
+        "categories": {
+            "auth": {
+                "kataruba47cc4098": {}
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d3tohughwc4wuy",
+                    "type": "cicd"
+                }
+            }
+        }
     }
-  }
 }

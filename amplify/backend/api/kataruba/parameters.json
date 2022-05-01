@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "kataruba",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authkataruba47cc4098",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
