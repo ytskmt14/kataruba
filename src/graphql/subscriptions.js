@@ -37,3 +37,45 @@ export const onDeleteTodo = /* GraphQL */ `
     }
   }
 `;
+export const onCreateEmployee = /* GraphQL */ `
+  subscription OnCreateEmployee($owner: String) {
+    onCreateEmployee(owner: $owner) {
+      id
+      username
+      nickname
+      birthday
+      comment
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onUpdateEmployee = /* GraphQL */ `
+  subscription OnUpdateEmployee($owner: String) {
+    onUpdateEmployee(owner: $owner) {
+      id
+      username
+      nickname
+      birthday
+      comment
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onDeleteEmployee = /* GraphQL */ `
+  subscription OnDeleteEmployee($owner: String) {
+    onDeleteEmployee(owner: $owner) {
+      id
+      username
+      nickname
+      birthday
+      comment
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;

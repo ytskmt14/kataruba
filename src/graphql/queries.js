@@ -32,3 +32,38 @@ export const listTodos = /* GraphQL */ `
     }
   }
 `;
+export const getEmployee = /* GraphQL */ `
+  query GetEmployee($id: ID!) {
+    getEmployee(id: $id) {
+      id
+      username
+      nickname
+      birthday
+      comment
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const listEmployees = /* GraphQL */ `
+  query ListEmployees(
+    $filter: ModelEmployeeFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listEmployees(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        username
+        nickname
+        birthday
+        comment
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+    }
+  }
+`;

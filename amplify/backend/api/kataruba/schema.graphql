@@ -11,3 +11,16 @@ type Todo
   name: String!
   description: String
 }
+
+type Employee
+  @model
+  @auth(rules: [
+    { allow: owner, operations: [create, update, delete, read] }
+    { allow: groups, groups: ["Users"], operations: [read] }
+  ]) {
+  id: ID!
+  username: String!
+  nickname: String!
+  birthday: AWSDate
+  comment: String
+}

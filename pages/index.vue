@@ -2,7 +2,9 @@
   <div>
     <div v-if="authState !== 'signedin'">You are signed out.</div>
     <amplify-authenticator>
-      <div v-if="authState === 'signedin' && user" ></div>
+      <div v-if="authState === 'signedin' && user" >
+        Hello, {{ user.username }}
+      </div>
       <h1>TodoApp</h1>
       <v-text-field v-model="name" label="Name"></v-text-field>
       <v-text-field v-model="description" label="Description"></v-text-field>
@@ -19,10 +21,10 @@
 
 <script>
 import { API } from 'aws-amplify'
+import { onAuthUIStateChange } from '@aws-amplify/ui-components';
 import { createTodo } from '~/src/graphql/mutations'
 import { listTodos } from '~/src/graphql/queries'
 import { onCreateTodo } from '~/src/graphql/subscriptions'
-import { onAuthUIStateChange } from '@aws-amplify/ui-components';
 
 export default {
   data() {
@@ -43,6 +45,7 @@ export default {
       this.authState = authState;
       this.user = authData;
     });
+
     this.getTodos()
     this.subscribe()
   },

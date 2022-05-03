@@ -81,6 +81,11 @@ export default {
           title: 'Inspire',
           to: '/inspire',
         },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'MyPage',
+          to: '/mypage',
+        },
       ],
       miniVariant: false,
       right: true,
